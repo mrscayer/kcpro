@@ -47,7 +47,7 @@ EOF
 
 gen_proxy_file_for_user() {
     cat >proxy.txt <<EOF
-$(awk -F "/" '{print $3 ":" $4 "@" $1 ":" $2 }' ${WORKDATA})
+$(awk -F "/" '{print $3 ":" $4 ":" $1 ":" $2 }' ${WORKDATA})
 EOF
 }
 
@@ -109,8 +109,8 @@ gen_3proxy >/usr/local/etc/3proxy/3proxy.cfg
 cat >>/etc/rc.local <<EOF
 bash ${WORKDIR}/boot_iptables.sh
 bash ${WORKDIR}/boot_ifconfig.sh
-ulimit -n 500000
-ulimit -u 500000
+ulimit -n 900000
+ulimit -u 900000
 service 3proxy start
 EOF
 
